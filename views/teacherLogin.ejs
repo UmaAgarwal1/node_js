@@ -1,0 +1,134 @@
+<!-- <%- include('layout/header')%> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login as Teacher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-button {
+            margin-bottom: 20px;
+            margin-left: 10px;  
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: goldenrod;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: goldenrod;
+        }
+
+        .message-block {
+            margin-bottom: 30px;
+            color: #e74c3c; /* Red color for error messages */
+        }
+    </style>
+</head>
+<body>
+    <%- include('layout/header')%>
+    <div class="login-container">
+        <h2>Login as Teacher</h2>
+        <% if (!success) { %>
+            <div
+              class="alert alert-dismissible fade show alert-<%= message %> message-block"
+              role="alert"
+            >
+              <strong><%= message %></strong>
+            <% } %>
+        <form class="login-form" action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <label> For test purposes </label>
+            <label> username: test </label>
+            <label> password: test123 </label>
+        </form>
+        
+    </div>
+
+    <script>
+        function handleLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Perform basic authentication (replace this with secure authentication on the server)
+            if (username === 'uma' && password === 'uma') {
+                // Redirect to the view records webpage (replace 'view-records.html' with the actual URL)
+                window.location.href = '/view-records';
+                return false; // Prevent the form from submitting
+            } else {
+                alert('Invalid username or password');
+                return false; // Prevent the form from submitting
+            }
+        }
+
+         // Check if the user is authenticated when they load the page
+         document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.getItem('authenticatedTeacher') === 'true') {
+                window.location.href = 'view-records.html';
+            }
+        });
+    </script>
+
+</body>
+</html>

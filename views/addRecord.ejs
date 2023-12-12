@@ -1,0 +1,118 @@
+<%- include('layout/header')%>
+<%- include('layout/footer')%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            margin-bottom: 20px;
+            margin-left: 0.8px;  
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: goldenrod;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .clear-button {
+            margin-bottom: 20px;
+            margin-left: 10px;  
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: goldenrod;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+
+        }
+        .back-button {
+            margin-bottom: 20px;
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: goldenrod;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add Student Result</h2>
+    <form action="/add-record" method="post" id="add-form">
+        <label for="rollNo">Roll No.:</label>
+        <input type="text" id="rollNo" name="rollNo" required>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="Date of Birth">Date of Birth:</label>
+        <input type="date" id="Date of Birth" name="dob" required>
+
+        <label for="score">Score:</label>
+        <input type="number" id="score" name="score" min="0" max="500">
+        <button type = "submit" class="submit-button">Submit</button>
+        <button type="button" class="clear-button" onclick="clearForm()">Clear</button>
+        <a href="/view-records" type="button" class="button btn back-button">Back</button>
+    </form>
+    <script>
+        function clearForm() {
+             // Get the form element by its ID
+             const form = document.getElementById('add-form');
+ 
+             // Reset the form to clear input fields
+             form.reset();
+         }
+     </script>
+</body>
+</html>

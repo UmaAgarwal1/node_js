@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Result</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .result-container {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 80%;
+        max-width: 600px;
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .result-header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        /* border-bottom: 2px solid #2980b9; */
+      }
+
+      .result-content {
+        padding: 20px;
+        border: 2px solid #3498db; /* Full border around the container */
+        border-radius: 10px;
+        margin: 10px;
+      }
+
+      .result-item {
+        margin-bottom: 5px;
+        /* border-bottom: 1px solid #ccc; Border between result items */
+        padding-bottom: 10px; /* Add some padding to separate the border from text */
+      }
+
+      .result-label {
+        font-weight: bold;
+        margin-right: 10px;
+        color: #333;
+      }
+
+      .result-value {
+        color: #555;
+      }
+
+      .result-score {
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      /* Hover effect on result items */
+      .result-item:hover {
+        background-color: #f8f8f8;
+        transition: background-color 0.3s;
+      }
+
+      .action-buttons {
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        border: 2px solid goldenrod; /* Border color */
+        background-color: goldenrod; /* Background color */
+        color: #fff; /* Text color */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        margin: auto;
+      }
+
+      /* Responsive design for smaller screens */
+      @media only screen and (max-width: 600px) {
+        .result-container {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="result-container">
+      <div class="result-header">
+        <h2>Student Result</h2>
+      </div>
+      <% results.forEach((student) => { %>
+      <div class="result-content">
+        <div class="result-item">
+          <span class="result-label">Roll Number:</span>
+          <span class="result-value"> <%= student.rollno %> </span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Name:</span>
+          <span class="result-value"> <%= student.name %> </span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">DOB:</span>
+          <span class="result-value"> <%= student.dob %> </span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Score:</span>
+          <span class="result-score"> <%= student.score %> </span>
+        </div>
+      </div>
+      <% }) %>
+      <div class="action-buttons">
+        <a href="/search" class="btn btn-primary">Back</a>
+      </div>
+    </div>
+  </body>
+</html>
