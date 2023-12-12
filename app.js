@@ -4,9 +4,9 @@ const express=require("express");
 const mongoose=require("mongoose");
 const session=require("express-session");
 const app =express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3000;
 //database connection
-mongoose.connect(process.env.DB_URI, {});
+mongoose.connect(process.env.DB_URI || 'mongodb://localhost:27017/ResultManagementSystem', {});
 const db=mongoose.connection;
 db.on("error",(error)=>console.log(error));
 db.once("open", ()=> console.log("Connected to the database!"));
